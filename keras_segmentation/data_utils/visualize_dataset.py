@@ -34,9 +34,9 @@ def _get_colored_segmentation_image(img, seg, colors,
     return img, seg_img
 
 
-def visualize_segmentation_dataset(images_path, segs_path, n_classes,
+def visualize_segmentation_dataset(images_path, segs_path, n_classes, image_size=(352,480),
                                    do_augment=False, ignore_non_matching=False,
-                                   no_show=False, image_size=None, augment_name="aug_all", custom_aug=None):
+                                   no_show=False, augment_name="aug_all", custom_aug=None):
     try:
         # Get image-segmentation pairs
         img_seg_pairs = get_pairs_from_paths(
