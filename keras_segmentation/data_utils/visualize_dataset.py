@@ -5,6 +5,7 @@ import random
 import numpy as np
 import cv2
 
+from matplotlib import pyplot as plt
 from .augmentation import augment_seg, custom_augment_seg
 from .data_loader import \
     get_pairs_from_paths, DATA_LOADER_SEED, class_colors, DataLoaderError
@@ -62,9 +63,10 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes, image_size
                 seg_img = cv2.resize(seg_img, image_size)
 
             print("Please press any key to display the next image")
-            cv2.imshow("img", img)
-            cv2.imshow("seg_img", seg_img)
-            cv2.waitKey(0)
+            plt.imshow(img)
+            plt.show()
+            plt.imshow(seg_img)
+            plt.show()
     except DataLoaderError as e:
         print("Found error during data loading\n{0}".format(str(e)))
         return False
@@ -92,9 +94,10 @@ def visualize_segmentation_dataset_one(images_path, segs_path, n_classes,
                                         n_classes, do_augment=do_augment)
 
     if not no_show:
-        cv2.imshow("img", img)
-        cv2.imshow("seg_img", seg_img)
-        cv2.waitKey(0)
+        plt.imshow(img)
+        plt.show()
+        plt.imshow(seg_img)
+        plt.show()
 
     return img, seg_img
 
