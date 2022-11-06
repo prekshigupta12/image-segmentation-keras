@@ -64,7 +64,7 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes, image_size
             print("Please press any key to display the next image")
             cv2.imshow("img", img)
             cv2.imshow("seg_img", seg_img)
-            cv2.waitKey(5000)
+            cv2.waitKey(0)
     except DataLoaderError as e:
         print("Found error during data loading\n{0}".format(str(e)))
         return False
@@ -94,7 +94,7 @@ def visualize_segmentation_dataset_one(images_path, segs_path, n_classes,
     if not no_show:
         cv2.imshow("img", img)
         cv2.imshow("seg_img", seg_img)
-        cv2.waitKey()
+        cv2.waitKey(0)
 
     return img, seg_img
 
