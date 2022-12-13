@@ -12,6 +12,9 @@ elif IMAGE_ORDERING == 'channels_last':
     pretrained_url = "https://github.com/fchollet/deep-learning-models/" \
                      "releases/download/v0.1/" \
                      "vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"
+    
+pretrained_url_MaSTr1325_Unet = "https://github.com/fchollet/deep-learning-models/" \
+                     "releases/download/FolderWithTrainedMaSTrUnet/" 
 
 
 def get_vgg_encoder(input_height=224,  input_width=224, pretrained='imagenet', channels=3):
@@ -76,6 +79,11 @@ def get_vgg_encoder(input_height=224,  input_width=224, pretrained='imagenet', c
     if pretrained == 'imagenet':
         VGG_Weights_path = tf.keras.utils.get_file(
             pretrained_url.split("/")[-1], pretrained_url)
+        Model(img_input, x).load_weights(VGG_Weights_path, by_name=True, skip_mismatch=True)
+        
+    if pretrained == 'MaSTr1325_Unet':
+        VGG_Weights_path = tf.keras.utils.get_file(
+            pretrained_url_MaSTr1325_Unet.split("/")[-1], pretrained_url_MaSTr1325_Unet)
         Model(img_input, x).load_weights(VGG_Weights_path, by_name=True, skip_mismatch=True)
 
     return img_input, [f1, f2, f3, f4, f5]
