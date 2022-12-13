@@ -119,7 +119,7 @@ def unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels
 def vgg_unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3, pretrained_model = 'MaSTr1325_Unet'):
 
     model = _unet(n_classes, get_vgg_encoder,
-                  input_height=input_height, input_width=input_width, pretrained_model, channels=3)
+                  input_height=input_height, input_width=input_width, pretrained_model=pretrained_model, channels=3)
     model.model_name = "vgg_unet"
     return model
 
