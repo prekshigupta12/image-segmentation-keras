@@ -21,7 +21,7 @@ elif IMAGE_ORDERING == 'channels_last':
                      "resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5"
     
 pretrained_url_MaSTr1325_resnetUnet = "https://github.com/fchollet/deep-learning-models/" \
-                     "releases/download/FolderWithTrainedMaSTrUnet/"
+                     "releases/download/FolderWithTrainedMaSTrResUnet/"
 
 def one_side_pad(x):
     x = ZeroPadding2D((1, 1), data_format=IMAGE_ORDERING)(x)
