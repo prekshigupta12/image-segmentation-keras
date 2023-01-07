@@ -125,10 +125,10 @@ def vgg_unet(n_classes, input_height=416, input_width=608, encoder_level=3, chan
 
 
 def resnet50_unet(n_classes, input_height=416, input_width=608,
-                  encoder_level=3, channels=3):
+                  encoder_level=3, channels=3, pretrained_model='MaSTr1325_Unet'):
 
     model = _unet(n_classes, get_resnet50_encoder,
-                  input_height=input_height, input_width=input_width, channels=channels)
+                  input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
     model.model_name = "resnet50_unet"
     return model
 
