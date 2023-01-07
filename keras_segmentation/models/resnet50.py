@@ -19,7 +19,9 @@ elif IMAGE_ORDERING == 'channels_last':
     pretrained_url = "https://github.com/fchollet/deep-learning-models/" \
                      "releases/download/v0.2/" \
                      "resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5"
-
+    
+pretrained_url_MaSTr1325_resnetUnet = "https://github.com/fchollet/deep-learning-models/" \
+                     "releases/download/FolderWithTrainedMaSTrUnet/"
 
 def one_side_pad(x):
     x = ZeroPadding2D((1, 1), data_format=IMAGE_ORDERING)(x)
@@ -180,6 +182,11 @@ def get_resnet50_encoder(input_height=224,  input_width=224,
     if pretrained == 'imagenet':
         weights_path = tf.keras.utils.get_file(
             pretrained_url.split("/")[-1], pretrained_url)
+        Model(img_input, x).load_weights(weights_path, by_name=True, skip_mismatch=True)
+    
+    if pretrained == 'MaSTr1325_Unet':
+        weights_path = tf.keras.utils.get_file(
+            pretrained_url_MaSTr1325_resnetUnet.split("/")[-1], pretrained_url_MaSTr1325_resnetUnet)
         Model(img_input, x).load_weights(weights_path, by_name=True, skip_mismatch=True)
 
     return img_input, [f1, f2, f3, f4, f5]
