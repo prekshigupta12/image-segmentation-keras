@@ -108,10 +108,10 @@ def _unet(n_classes, encoder, l1_skip_conn=True, input_height=416,
     return model
 
 
-def unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3):
+def unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3, pretrained_model='MaSTr1325_Unet'):
 
     model = _unet(n_classes, vanilla_encoder,
-                  input_height=input_height, input_width=input_width, channels=channels)
+                  input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
     model.model_name = "unet"
     return model
 
