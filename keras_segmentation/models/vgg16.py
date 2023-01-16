@@ -13,8 +13,9 @@ elif IMAGE_ORDERING == 'channels_last':
                      "releases/download/v0.1/" \
                      "vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"
     
-pretrained_url_MaSTr1325_Unet = "https://github.com/fchollet/deep-learning-models/" \
-                     "releases/download/FolderWithTrainedMaSTrUnet/" 
+pretrained_url_MaSTr1325_Unet = "https://github.com/prekshigupta12/image-segmentation-keras/" \
+                                 "releases/download/v1/" \
+                                 "MaSTr1325_vgg_unet_01.h5" 
 
 
 def get_vgg_encoder(input_height=224,  input_width=224, pretrained='imagenet', channels=3):
@@ -80,8 +81,11 @@ def get_vgg_encoder(input_height=224,  input_width=224, pretrained='imagenet', c
         VGG_Weights_path = tf.keras.utils.get_file(
             pretrained_url.split("/")[-1], pretrained_url)
         Model(img_input, x).load_weights(VGG_Weights_path, by_name=True, skip_mismatch=True)
-        
+        print(1)
+    print(2)
+    
     if pretrained == 'MaSTr1325_Unet':
+        print(3)
         VGG_Weights_path = tf.keras.utils.get_file(
             pretrained_url_MaSTr1325_Unet.split("/")[-1], pretrained_url_MaSTr1325_Unet)
         Model(img_input, x).load_weights(VGG_Weights_path, by_name=True, skip_mismatch=True)
