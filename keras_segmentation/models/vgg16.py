@@ -18,7 +18,7 @@ pretrained_url_MaSTr1325_Unet = "https://github.com/prekshigupta12/image-segment
                                  "MaSTr1325_vgg_unet_01.h5" 
 
 
-def get_vgg_encoder(input_height=224,  input_width=224, pretrained='MaSTr1325_Unet', channels=3):
+def get_vgg_encoder(input_height=224,  input_width=224, pretrained='imagenet', channels=3):
 
     assert input_height % 32 == 0
     assert input_width % 32 == 0
