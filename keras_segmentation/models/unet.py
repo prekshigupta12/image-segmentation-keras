@@ -70,7 +70,7 @@ def _unet(n_classes, encoder, l1_skip_conn=True, input_height=416,
           input_width=608, channels=3, pretrained_model='MaSTr1325_Unet'):
 
     img_input, levels = encoder(
-        input_height=input_height, input_width=input_width, channels=channels)
+        input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
     [f1, f2, f3, f4, f5] = levels
 
     o = f4
