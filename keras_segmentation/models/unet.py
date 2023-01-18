@@ -67,10 +67,10 @@ def unet_mini(n_classes, input_height=360, input_width=480, channels=3):
 
 
 def _unet(n_classes, encoder, l1_skip_conn=True, input_height=416,
-          input_width=608, channels=3, pretrained_model='MaSTr1325_Unet'):
+          input_width=608, channels=3, pretrained='MaSTr1325_Unet'):
 
     img_input, levels = encoder(
-        input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
+        input_height=input_height, input_width=input_width, channels=channels, pretrained=pretrained)
     [f1, f2, f3, f4, f5] = levels
 
     o = f4
@@ -108,27 +108,27 @@ def _unet(n_classes, encoder, l1_skip_conn=True, input_height=416,
     return model
 
 
-def unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3, pretrained_model='MaSTr1325_Unet'):
+def unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3, pretrained='MaSTr1325_Unet'):
 
     model = _unet(n_classes, vanilla_encoder,
-                  input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
+                  input_height=input_height, input_width=input_width, channels=channels, pretrained=pretrained)
     model.model_name = "unet"
     return model
 
 
-def vgg_unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3, pretrained_model='MaSTr1325_Unet'):
+def vgg_unet(n_classes, input_height=416, input_width=608, encoder_level=3, channels=3, pretrained='MaSTr1325_Unet'):
 
     model = _unet(n_classes, get_vgg_encoder,
-                  input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
+                  input_height=input_height, input_width=input_width, channels=channels, pretrained=pretrained)
     model.model_name = "vgg_unet"
     return model
 
 
 def resnet50_unet(n_classes, input_height=416, input_width=608,
-                  encoder_level=3, channels=3, pretrained_model='MaSTr1325_Unet'):
+                  encoder_level=3, channels=3, pretrained='MaSTr1325_Unet'):
 
     model = _unet(n_classes, get_resnet50_encoder,
-                  input_height=input_height, input_width=input_width, channels=channels, pretrained_model=pretrained_model)
+                  input_height=input_height, input_width=input_width, channels=channels, pretrained=pretrained)
     model.model_name = "resnet50_unet"
     return model
 
